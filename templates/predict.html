@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+</head>
+
+<body>
+
+    {% if result is not none %}
+
+    <h2>Prediction Result</h2>
+
+    <p>
+        Risk Probability: {{result[0]}}
+        <br/>
+    <p>
+        Prediction:
+        {% if result[1][0]==1 %}
+            🟢 Low Risk of Heart Disease
+        {% else %}
+            🔴 High Risk of Heart Disease
+        {% endif %}
+    </p>
+
+    {% endif %}
+
+</body>
+
+</html>

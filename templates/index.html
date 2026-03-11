@@ -1,0 +1,199 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart-Disease-Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <form action="/predict" method="post">
+        <h1>Predict Heart Disease</h1>
+        <p>Age:</p>
+        <input type="number" name="age" placeholder="enter age" required>
+        <p>Sex:</p>
+        <select name="sex">
+            <option value="1">Male</option>
+            <option value="0">Female</option>
+        </select>
+        <p>Chest Pain Type:</p>
+        <select name="chest_pain_type">
+            <option value="1">Typical Angina</option>
+            <option value="2">Atypical Angina</option>
+            <option value="3">Non-Anginal Pain</option>
+            <option value="4">Asymptomatic</option>
+        </select>
+        <p>Blood Pressure:</p>
+        <input type ="number" name="blood_pressure" placeholder="enter blood pressure" required>
+        <p>Cholesterol:</p>
+        <input type="number" name="cholesterol" placeholder="enter cholesterol" required>
+        <p>FBS over 120 mg/dl:</p>
+        <select name="fbs">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+        <p>EKG results:</p>
+        <select name="ekg">
+            <option value="0">Normal</option>
+            <option value="1">ST-T wave abnormality</option>
+            <option value="2">Left ventricular hypertrophy</option>
+        </select>
+        <p>Max Heart Rate:</p>
+        <input type="number" name="max_heart_rate" placeholder="enter max heart rate" required>
+        <p>Exercise Induced Angina:</p>
+        <select name="angina">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+        <p>ST Depression:</p>
+        <input type="float" name="st_depression" placeholder="enter st depression">
+        <p>Slope of ST Segment:</p>
+        <select name="st_slope">
+            <option value="1">Upsloping</option>
+            <option value="2">Flat</option>
+            <option value="3">Downsloping</option>
+        </select>
+        <p>Number of Major Vessels:</p>
+        <select name="num_major_vessels">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+        <p>Thallium:</p>
+        <select name="thallium">
+            <option value="3">Normal</option>
+            <option value="6">Fixed Defect</option>
+            <option value="7">Reversible Defect</option>
+        </select>
+        <button type="submit" >Predict</button>
+    </form>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <form action="/predict" method="post">
+
+            <h1>Heart Disease Prediction</h1>
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label>Age</label>
+                    <input type="number" min="0" name="age" placeholder="Enter age" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Sex</label>
+                    <select name="sex">
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Chest Pain Type</label>
+                    <select name="chest_pain_type">
+                        <option value="1">Typical Angina</option>
+                        <option value="2">Atypical Angina</option>
+                        <option value="3">Non-Anginal Pain</option>
+                        <option value="4">Asymptomatic</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Blood Pressure</label>
+                    <input type="number" min="0" name="blood_pressure" placeholder="Enter BP" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Cholesterol</label>
+                    <input type="number" min="0" name="cholesterol" placeholder="Enter cholesterol" required>
+                </div>
+
+                <div class="form-group">
+                    <label>FBS over 120</label>
+                    <select name="fbs">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>EKG Results</label>
+                    <select name="ekg">
+                        <option value="0">Normal</option>
+                        <option value="1">ST-T abnormality</option>
+                        <option value="2">Left ventricular hypertrophy</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Max Heart Rate</label>
+                    <input type="number" min="0" name="max_heart_rate" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Exercise Induced Angina</label>
+                    <select name="angina">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>ST Depression</label>
+                    <input type="number" min="0.0" step="0.1" name="st_depression" required>
+                </div>
+
+                <div class="form-group">
+                    <label>ST Slope</label>
+                    <select name="st_slope">
+                        <option value="1">Upsloping</option>
+                        <option value="2">Flat</option>
+                        <option value="3">Downsloping</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Major Vessels</label>
+                    <select name="num_major_vessels">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Thallium</label>
+                    <select name="thallium">
+                        <option value="3">Normal</option>
+                        <option value="6">Fixed Defect</option>
+                        <option value="7">Reversible Defect</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <button type="submit" class="submit-btn">Predict</button>
+            <button type="reset" class="reset-btn">reset</button>
+        </form>
+
+    </div>
+
+</body>
+
+</html>
